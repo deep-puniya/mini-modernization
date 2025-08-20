@@ -1,0 +1,20 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: mini-modern-cluster
+  region: us-east-1
+  version: "1.32"
+
+iam:
+  serviceRoleARN: arn:aws:iam::020602600795:role/EKSControlPlaneRole-280259.88101755715906
+
+nodeGroups:
+  - name: ng-group
+    instanceType: t2.micro
+    desiredCapacity: 2
+    minSize: 2
+    maxSize: 4
+    iam:
+      instanceRoleARN: arn:aws:iam::020602600795:role/EKSNodeInstanceRole-280259.88101755715906
+      instanceProfileARN: arn:aws:iam::020602600795:instance-profile/EKSNodeInstanceProfile
